@@ -8,6 +8,30 @@
   </head>
   <body>
 
+    <!-- Menu inicial -->
+    <div id="menu">
+      <div id="menu-box">
+        <h1 id="menu-title">影 KAGE RUN</h1>
+        <p id="menu-subtitle">O ninja não para. Você para?</p>
+
+        <div id="difficulty-select">
+          <p>Escolha a dificuldade:</p>
+          <div id="difficulty-buttons">
+            <button class="diff-btn" data-diff="easy">🌸 Fácil</button>
+            <button class="diff-btn selected" data-diff="medium">⚔ Médio</button>
+            <button class="diff-btn" data-diff="hard">💀 Difícil</button>
+          </div>
+        </div>
+
+        <button id="btn-start">Iniciar</button>
+
+        <div id="records-box">
+          <p id="records-title">🏆 Recordes</p>
+          <ol id="records-list"></ol>
+        </div>
+      </div>
+    </div>
+
     <script type="module" src="js/game.js"></script>
   </body>
 </html>

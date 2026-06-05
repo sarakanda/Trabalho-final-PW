@@ -1,4 +1,4 @@
-/*  Reset & Base */
+/* Reset & Base */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
@@ -12,3 +12,100 @@ body {
 }
 
 .hidden { display: none !important; }
+
+/* Menu */
+#menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(180deg, #0a0010 0%, #1a0025 100%);
+}
+
+#menu-box {
+  text-align: center;
+  padding: 40px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,50,50,0.3);
+  border-radius: 16px;
+  min-width: 340px;
+}
+
+#menu-title {
+  font-size: 48px;
+  color: #ff4444;
+  letter-spacing: 6px;
+  text-shadow: 0 0 20px rgba(255,50,50,0.5);
+  margin-bottom: 6px;
+}
+
+#menu-subtitle {
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+#difficulty-select p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 10px;
+}
+
+#difficulty-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.diff-btn {
+  padding: 8px 16px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.diff-btn:hover, .diff-btn.selected {
+  border-color: #ff4444;
+  color: #fff;
+  background: rgba(255,50,50,0.15);
+}
+
+#btn-start {
+  width: 100%;
+  padding: 14px;
+  background: #cc0000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: background 0.2s;
+  margin-bottom: 28px;
+}
+
+#btn-start:hover { background: #ff2222; }
+
+#records-title {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 8px;
+}
+
+#records-list {
+  list-style: none;
+  padding: 0;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+}
+
+#records-list li {
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
