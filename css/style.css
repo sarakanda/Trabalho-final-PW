@@ -109,3 +109,82 @@ body {
   padding: 4px 0;
   border-bottom: 1px solid rgba(255,255,255,0.05);
 }
+
+/* Tela do jogo */
+#game-screen {
+  position: relative;
+  width: 480px;
+  height: 640px;
+  overflow: hidden;
+  border: 2px solid rgba(255,50,50,0.2);
+  border-radius: 4px;
+}
+
+#world {
+  position: absolute;
+  inset: 0;
+  background: #0a0010;
+}
+
+#bg-far {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 60px,
+      rgba(255,50,50,0.03) 60px,
+      rgba(255,50,50,0.03) 62px
+    ),
+    linear-gradient(180deg, #0a0010 0%, #15001f 100%);
+  background-size: auto, auto;
+}
+
+#bg-near {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 80px,
+      rgba(150,0,0,0.08) 80px,
+      rgba(150,0,0,0.08) 82px
+    );
+}
+
+#bg-far::before {
+  content: '';
+  position: absolute;
+  bottom: 60px;
+  left: 40px;
+  width: 30px;
+  height: 80px;
+  background: rgba(180,0,0,0.12);
+  clip-path: polygon(20% 100%, 80% 100%, 75% 60%, 100% 55%, 100% 50%, 50% 40%, 0% 50%, 0% 55%, 25% 60%);
+}
+
+#bg-far::after {
+  content: '';
+  position: absolute;
+  bottom: 60px;
+  right: 60px;
+  width: 24px;
+  height: 60px;
+  background: rgba(180,0,0,0.10);
+  clip-path: polygon(20% 100%, 80% 100%, 75% 60%, 100% 55%, 100% 50%, 50% 40%, 0% 50%, 0% 55%, 25% 60%);
+}
+
+#ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(180deg, #1a0a00 0%, #0d0600 100%);
+  border-top: 2px solid rgba(255,100,0,0.3);
+}
