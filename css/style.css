@@ -187,4 +187,36 @@ body {
   height: 60px;
   background: linear-gradient(180deg, #1a0a00 0%, #0d0600 100%);
   border-top: 2px solid rgba(255,100,0,0.3);
+} 
+
+/* Ninja (player) */
+#ninja {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  left: 80px;
+  bottom: 60px;
+  z-index: 5;
+  image-rendering: pixelated;
+}
+
+#ninja.shielded::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid #44aaff;
+  box-shadow: 0 0 12px rgba(50,150,255,0.6);
+  animation: shield-pulse 1s ease-in-out infinite;
+}
+
+@keyframes shield-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.6; transform: scale(1.08); }
+}
+
+#ninja.hit { animation: blink 0.1s step-end 6; }
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
