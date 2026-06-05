@@ -1,4 +1,4 @@
-/* Reset & Base */
+/* ── Reset & Base ─────────────────────────────────── */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
@@ -13,7 +13,7 @@ body {
 
 .hidden { display: none !important; }
 
-/* Menu */
+/* ── MENU ─────────────────────────────────────────── */
 #menu {
   display: flex;
   justify-content: center;
@@ -110,7 +110,7 @@ body {
   border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-/* Tela do jogo */
+/* ── TELA DO JOGO ─────────────────────────────────── */
 #game-screen {
   position: relative;
   width: 480px;
@@ -187,9 +187,28 @@ body {
   height: 60px;
   background: linear-gradient(180deg, #1a0a00 0%, #0d0600 100%);
   border-top: 2px solid rgba(255,100,0,0.3);
-} 
+}
 
-/* Ninja (player) */
+/* ── HUD ──────────────────────────────────────────── */
+#hud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: rgba(0,0,0,0.5);
+  font-size: 14px;
+  z-index: 10;
+}
+
+#hud-score { color: #ffcc44; font-weight: bold; }
+#hud-lives { color: #ff4444; letter-spacing: 2px; }
+#hud-powerup { color: #44ffaa; font-size: 12px; min-width: 80px; text-align: center; }
+
+/* ── NINJA (player) ───────────────────────────────── */
 #ninja {
   position: absolute;
   width: 64px;
@@ -221,7 +240,7 @@ body {
   50%       { opacity: 0; }
 }
 
-/* Obstáculos */
+/* ── OBSTÁCULOS ───────────────────────────────────── */
 .obstacle {
   position: absolute;
   z-index: 4;
@@ -283,7 +302,8 @@ body {
   background: #050002;
   border-top: 2px solid #330000;
 }
-/* ── POWER-UPS */
+
+/* ── POWER-UPS ────────────────────────────────────── */
 .powerup {
   position: absolute;
   width: 28px;
@@ -307,12 +327,12 @@ body {
 .powerup.slow   { background: rgba(150,50,255,0.3); border: 2px solid #aa44ff; }
 .powerup.life   { background: rgba(255,50,50,0.3);  border: 2px solid #ff4444; }
 
-/* ── EFEITO SLOW */
+/* ── EFEITO SLOW ──────────────────────────────────── */
 body.slow-active #game-screen {
   filter: hue-rotate(90deg) brightness(0.9);
 }
 
-/* ── PAUSA  */
+/* ── PAUSA ────────────────────────────────────────── */
 #pause-overlay {
   position: absolute;
   inset: 0;
@@ -351,7 +371,7 @@ body.slow-active #game-screen {
   background: rgba(255,255,255,0.1);
 }
 
-/* ── GAME OVER */
+/* ── GAME OVER ────────────────────────────────────── */
 #gameover-screen {
   display: flex;
   justify-content: center;
