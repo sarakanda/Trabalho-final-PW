@@ -8,7 +8,7 @@
   </head>
   <body>
 
-    <!-- Menu inicial -->
+    <!-- MENU INICIAL -->
     <div id="menu">
       <div id="menu-box">
         <h1 id="menu-title">影 KAGE RUN</h1>
@@ -32,12 +32,39 @@
       </div>
     </div>
 
-    <!-- Tela do jogo -->
+    <!-- TELA DO JOGO -->
     <div id="game-screen" class="hidden">
       <div id="world">
         <div id="bg-far"></div>
         <div id="bg-near"></div>
         <div id="ground"></div>
+      </div>
+
+      <!-- HUD -->
+      <div id="hud">
+        <span id="hud-score">Pontos: 0</span>
+        <span id="hud-lives">❤ ❤ ❤</span>
+        <span id="hud-powerup"></span>
+      </div>
+
+      <!-- PAUSA -->
+      <div id="pause-overlay" class="hidden">
+        <div id="pause-box">
+          <p>⏸ Pausado</p>
+          <button id="btn-resume">Continuar</button>
+          <button id="btn-menu-pause">Menu</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TELA DE GAME OVER -->
+    <div id="gameover-screen" class="hidden">
+      <div id="gameover-box">
+        <h2>Game Over</h2>
+        <p id="gameover-score"></p>
+        <p id="gameover-record"></p>
+        <button id="btn-restart">Jogar de novo</button>
+        <button id="btn-menu-over">Menu</button>
       </div>
     </div>
 
