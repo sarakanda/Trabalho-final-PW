@@ -220,3 +220,66 @@ body {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0; }
 }
+
+/* Obstáculos */
+.obstacle {
+  position: absolute;
+  z-index: 4;
+}
+
+.obstacle.bamboo {
+  width: 28px;
+  height: 50px;
+  background: linear-gradient(90deg, #2d5a1b, #4a8a2a, #2d5a1b);
+  border-radius: 4px;
+  bottom: 60px;
+  border: 1px solid #1a3a0f;
+}
+
+.obstacle.bamboo::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: -4px;
+  right: -4px;
+  height: 3px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 2px;
+}
+
+.obstacle.bamboo::after {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: -4px;
+  right: -4px;
+  height: 3px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 2px;
+}
+
+.obstacle.kunai {
+  width: 36px;
+  height: 8px;
+  bottom: 110px;
+  background: #888;
+  clip-path: polygon(0% 50%, 15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%);
+}
+
+.obstacle.kunai::before {
+  content: '';
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 14px solid #cc0000;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+
+.obstacle.pit {
+  height: 60px;
+  bottom: 0;
+  background: #050002;
+  border-top: 2px solid #330000;
+}
