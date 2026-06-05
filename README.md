@@ -57,6 +57,6 @@ game/
 ```
 Divisão de responsabilidades
 Membro	Responsabilidades
-Gabriel Brito	`game.js`, `player.js`, `collision.js`, `world.js`, `ui.js`
-Sara Kanda	`obstacles.js`, `powerups.js`, `config.js`, `storage.js`, `style.css`
+- Gabriel Brito	`game.js`, `player.js`, `collision.js`, `world.js`, `ui.js`
+- Sara Kanda	`obstacles.js`, `powerups.js`, `config.js`, `storage.js`, `style.css`
 
