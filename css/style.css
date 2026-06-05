@@ -283,3 +283,102 @@ body {
   background: #050002;
   border-top: 2px solid #330000;
 }
+/* ── POWER-UPS */
+.powerup {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  bottom: 90px;
+  border-radius: 50%;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  animation: powerup-float 1s ease-in-out infinite;
+}
+
+@keyframes powerup-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+.powerup.shield { background: rgba(50,150,255,0.3); border: 2px solid #44aaff; }
+.powerup.slow   { background: rgba(150,50,255,0.3); border: 2px solid #aa44ff; }
+.powerup.life   { background: rgba(255,50,50,0.3);  border: 2px solid #ff4444; }
+
+/* ── EFEITO SLOW */
+body.slow-active #game-screen {
+  filter: hue-rotate(90deg) brightness(0.9);
+}
+
+/* ── PAUSA  */
+#pause-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+#pause-box {
+  text-align: center;
+  padding: 30px;
+}
+
+#pause-box p {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+#pause-box button, #gameover-box button {
+  display: block;
+  width: 180px;
+  margin: 8px auto;
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: transparent;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+#pause-box button:hover, #gameover-box button:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* ── GAME OVER */
+#gameover-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.95);
+}
+
+#gameover-box {
+  text-align: center;
+  padding: 40px;
+  border: 1px solid rgba(255,50,50,0.3);
+  border-radius: 12px;
+  min-width: 300px;
+}
+
+#gameover-box h2 {
+  font-size: 36px;
+  color: #ff4444;
+  margin-bottom: 16px;
+}
+
+#gameover-score, #gameover-record {
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 8px;
+}
+
+#gameover-record { color: #ffcc44; }
