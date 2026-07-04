@@ -1,62 +1,108 @@
-# Trabalho-final-PW
-Repositório criado para o trabalho final da disciplina Programação Web do curso de Engenharia de Software da Universidade Federal do Amazonas
+# Kage Run — Aplicação Web (Parte 2)
 
-影 Kage Run
-Endless runner com tema ninja japonês desenvolvido para a disciplina de Programação Web.
+Aplicação Web em **Express + TypeScript + Prisma** que permite jogar o
+endless runner **Kage Run** (desenvolvido na Parte 1), com sistema de
+contas de usuário, login e ranking de pontuações.
 
--> Como jogar
-Espaço ou ↑ — pular
-P ou Esc — pausar
-Toque na tela (mobile) — pular
-Desvie dos obstáculos o maior tempo possível. A velocidade aumenta progressivamente.
+## ⚠️ Passo obrigatório antes de rodar
 
--> Obstáculos
-Obstáculo	Comportamento
-🎋 Bambu	No chão — pule por cima
-🗡 Kunai	Voando em altura média
-⬛ Fosso	Buraco no chão — pule com antecedência
+Este projeto foi desenvolvido em um ambiente sem acesso à internet para
+baixar os *engines* binários do Prisma. **Antes de rodar pela primeira
+vez**, execute na raiz do projeto:
 
--> Power-ups
-Power-up	Efeito
-🛡 Escudo	Invulnerabilidade por 5 segundos
-⏳ Lentidão	Obstáculos ficam mais lentos por 4 segundos
-❤ Vida extra	Recupera uma vida (máximo 5)
-Funcionalidades
-✅ Estados do jogo: menu, jogando, pausado, game over
-✅ 3 dificuldades (Fácil / Médio / Difícil)
-✅ 3 tipos de obstáculos com comportamentos distintos
-✅ 3 tipos de power-ups
-✅ Sistema de vidas e pontuação
-✅ Dificuldade crescente (velocidade aumenta com o tempo)
-✅ Top 5 recordes salvos com localStorage
-✅ Paralaxe CSS no cenário
-✅ Colisão AABB justa (com margem interna)
-✅ Efeitos sonoros (pulo, dano, power-up e game over)
-
-
--> Execução
-Abra `index.html` diretamente no navegador — não requer servidor.
-> Nota: por usar ES Modules (`type="module"`), alguns navegadores podem bloquear ao abrir via `file://`. Nesses casos, use uma extensão como **Live Server** (VS Code) ou rode `npx serve .` na pasta `/game`.
-Estrutura de arquivos
+```bash
+npm install
+npx prisma generate
+npx prisma migrate dev --name init
 ```
-game/
-├── index.html
-├── css/
-│   └── style.css          # Visual completo com tema japonês
-└── js/
-    ├── game.js            # Loop principal e orquestração de estados
-    ├── config.js          # Constantes globais e configurações de dificuldade
-    ├── world.js           # Cenário com efeito de paralaxe
-    ├── player.js          # Ninja: pulo, vidas, power-ups e hitbox
-    ├── obstacles.js       # Spawn e movimento dos 3 tipos de obstáculos
-    ├── powerups.js        # Spawn e efeitos dos power-ups
-    ├── collision.js       # Detecção de colisão AABB
-    ├── ui.js              # HUD, menus e telas
-    ├── storage.js         # Recordes com localStorage
-    └── audio.js           # Gerenciamento de efeitos sonoros
-```
-Divisão de responsabilidades
-Membro	Responsabilidades
-- Gabriel Brito	`game.js`, `player.js`, `collision.js`, `world.js`, `ui.js`
-- Sara Kanda	`obstacles.js`, `powerups.js`, `config.js`, `storage.js`, `style.css`
 
+Isso vai gerar o Prisma Client e criar o banco SQLite (`dev.db`) com as
+tabelas `majors`, `users` e `game_sessions`.
+
+## 🎨 Assets do jogo — placeholders
+
+Os seguintes arquivos são **placeholders temporários** (formas simples/
+sons silenciosos), pois os assets originais (sprites e sons do jogo)
+não estavam disponíveis neste ambiente. Substitua pelos arquivos reais
+do jogo, mantendo os mesmos nomes/caminhos:
+
+- `public/assets/run_0.png`, `run_1.png`, `run_2.png` — sprites do ninja
+- `public/assets/sounds/jump.wav`, `hit.wav`, `powerup.wav`, `gameover.wav`
+- `public/img/kagerun-screenshot.png`, `ninja-icon.png` — imagens da página About
+
+## Como rodar
+
+```bash
+# Ambiente de desenvolvimento (hot reload com nodemon)
+npm run start
+
+# Gerar build de produção (transpila TS para /build)
+npm run deploy
+
+# Rodar a versão de produção já transpilada
+npm run start:prod
+```
+
+A aplicação sobe por padrão em `http://localhost:3000`.
+
+## Popular a tabela de cursos (Majors)
+
+Antes de criar contas de usuário, é preciso ter ao menos um curso
+cadastrado. Você pode:
+
+1. Acessar `http://localhost:3000/majors/new` e cadastrar manualmente, ou
+2. Usar o Prisma Studio: `npx prisma studio`
+
+## Estrutura do projeto
+
+```
+kagerun-web/
+├── prisma/
+│   └── schema.prisma        # Modelos Major, User, GameSession
+├── public/
+│   ├── css/                 # style.css (gerado por SASS) + game.css
+│   ├── js/                  # Código do jogo (adaptado para Ajax)
+│   ├── img/                 # Imagens da página About
+│   └── assets/               # Sprites e sons do jogo
+├── src/
+│   ├── controllers/         # mainController, authController, majorController, gameController
+│   ├── services/            # majorService, userService, gameSessionService
+│   ├── middlewares/         # logger, requireAuth
+│   ├── router/               # router.ts — todas as rotas centralizadas
+│   ├── scss/                 # main.scss — fonte do SASS
+│   ├── types/                 # DTOs e extensão de tipos de sessão
+│   ├── utils/                 # validateEnv, prisma (singleton), helpers (Handlebars)
+│   ├── views/                 # Templates Handlebars (layout + páginas)
+│   └── index.ts               # Bootstrap da aplicação
+├── .env.example
+├── nodemon.json
+├── tsconfig.json
+└── package.json
+```
+
+## Variáveis de ambiente
+
+Copie `.env.example` para `.env` e ajuste conforme necessário:
+
+| Variável         | Descrição                                       |
+|------------------|--------------------------------------------------|
+| `NODE_ENV`       | `development` ou `production`                    |
+| `PORT`           | Porta do servidor Express                         |
+| `LOGS_PATH`      | Caminho do arquivo de log de acessos              |
+| `SESSION_SECRET` | Segredo usado para assinar o cookie de sessão     |
+| `DATABASE_URL`   | Connection string do banco (SQLite por padrão)    |
+
+## Rotas principais
+
+| Rota                  | Método | Descrição                                      | Protegida? |
+|------------------------|--------|-------------------------------------------------|------------|
+| `/`                    | GET    | Página do jogo                                  | ✅ Login   |
+| `/api/scores`          | POST   | Salva a pontuação da partida (Ajax)             | ✅ Login   |
+| `/ranking`              | GET    | Top 10 pontuações                               | ❌         |
+| `/about`                | GET    | Sobre o jogo                                    | ❌         |
+| `/register`             | GET/POST | Cadastro de usuário                           | ❌         |
+| `/login`                | GET/POST | Login                                         | ❌         |
+| `/logout`               | GET    | Encerra a sessão                                | ❌         |
+| `/majors`               | GET    | Lista de cursos (CRUD)                          | ❌         |
+| `/lorem/:qtd`           | GET    | Gera N parágrafos de lorem ipsum                | ❌         |
+| `/hb1`, `/hb2`, `/hb3`, `/hb4` | GET | Exemplos de uso do Handlebars           | ❌         |
