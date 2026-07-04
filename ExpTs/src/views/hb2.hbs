@@ -1,0 +1,13 @@
+<div class="card-box">
+  <h1>Exemplo /hb2 — Condicional #if</h1>
+
+  {{#if isLoggedIn}}
+    <p>✅ Você está autenticado no sistema.</p>
+  {{else}}
+    <p>🔒 Você ainda não fez login. <a href="/login">Entrar</a></p>
+  {{/if}}
+
+  {{#if hasHighScore}}
+    <p>🏆 Você já tem uma pontuação registrada no ranking!</p>
+  {{/if}}
+</div>
