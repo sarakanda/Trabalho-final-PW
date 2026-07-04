@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Curso do usuário (ex: Engenharia de Software, Ciência da Computação)
+model Major {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  users User[]
+
+  @@map("majors")
+}
+
+// Usuário da aplicação
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+
+  majorId   Int?     @map("major_id")
+  major     Major?   @relation(fields: [majorId], references: [id])
+
+  sessions  GameSession[]
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("users")
+}
+
+// Sessão/partida jogada por um usuário, com a pontuação obtida
+model GameSession {
+  id        Int      @id @default(autoincrement())
+  score     Int
+  userId    Int      @map("user_id")
+  user      User     @relation(fields: [userId], references: [id])
+  playedAt  DateTime @default(now()) @map("played_at")
+
+  @@map("game_sessions")
+}
