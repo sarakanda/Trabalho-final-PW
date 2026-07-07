@@ -1,0 +1,9 @@
+Crud de Majors sem views
+Sem arquivos de rotas
+Sem camada de serviços
+Sem validação de .env
+Layout não implementado
+Sass não implementado
+Sem helpers
+Padrão MVC não seguido
+Deleção de Major sem ajax
